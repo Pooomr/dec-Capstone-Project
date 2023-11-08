@@ -15,10 +15,6 @@ The users of this dataset can be Job seekers, recruiters or companies seeking ne
 > - Which locations have the most job opportunities? 
 
 ## Source datasets 
-What datasets are you sourcing from? How frequently are the source datasets updating?
-
-Example: 
-
 | reed.co.uk (Jobseeker API) | REST API | https://www.reed.co.uk/developers/jobseeker |
 
 ## Solution architecture
