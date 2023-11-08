@@ -27,4 +27,4 @@ Example:
 ## Breakdown of tasks 
 Tasks will be set out and managed via Trello.
 
-![images/Trello-kanban.png](images/Trello-kanban.png)
+![images/Trello-kanban.PNG](images/Trello-kanban.PNG)
