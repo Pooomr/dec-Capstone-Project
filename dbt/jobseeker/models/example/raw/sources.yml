@@ -1,0 +1,8 @@
+version: 1
+
+sources:
+  - name: retrieve_jobs
+    database: jobseeker
+    schema: raw
+    tables:
+      - name: "Retrieve Jobs"
