@@ -4,9 +4,6 @@ set -eu
 main() {
     export TOP_DIR=$(git rev-parse --show-toplevel)
 
-    # Lint Python
-    #black "${TOP_DIR}/airflow/"
-
     # Setup dbt
     dbt deps --project-dir "${TOP_DIR}/dbt/jobseeker"
 
