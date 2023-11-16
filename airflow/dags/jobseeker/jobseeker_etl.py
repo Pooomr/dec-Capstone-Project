@@ -20,7 +20,7 @@ with DAG(
     airbyteUser = "{{var.value.AIRBYTE_USER}}"
     airbytePw = "{{var.value.AIRBYTE_PASSWORD}}"
 
-    pull_task = PythonOperator(
+    pull_data = PythonOperator(
         task_id="run_airbyte_pull",
         python_callable=run_airbyte_pull,
         op_kwargs={
@@ -30,17 +30,9 @@ with DAG(
         }
     )
 
-    check_job = PythonOperator(
-        task_id="check_airbyte_job",
-        python_callable=check_airbyte_job,
-        op_kwargs={
-            "connId": connId
-        }
-    )
-
     run_dbt = BashOperator(
-        task_id="test_dbt_run"
+        task_id="test_dbt_run",
         bash_command='echo Testing dbt run'
     )
 
-    pull_task >> check_job >> run_dbt
+    pull_data >>  run_dbt

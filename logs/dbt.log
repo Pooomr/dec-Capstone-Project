@@ -1,0 +1,30 @@
+[0m21:37:08.631607 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002199F030100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219A3396400>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219A33966D0>]}
+
+
+============================== 21:37:08.791618 | b9441d1a-973b-4a9a-a5a3-42b6aaae2d99 ==============================
+[0m21:37:08.791618 [info ] [MainThread]: Running with dbt=1.6.0
+[0m21:37:08.792627 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\okayt\\.dbt', 'version_check': 'True', 'warn_error': 'None', 'log_path': 'logs', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'no_print': 'None', 'quiet': 'False', 'warn_error_options': 'WarnErrorOptions(include=[], exclude=[])', 'invocation_command': 'dbt init jobseeker', 'static_parser': 'True', 'introspect': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m21:37:08.795629 [warn ] [MainThread]: [ConfigFolderDirectory]: Unable to parse dict {'dir': WindowsPath('C:/Users/okayt/.dbt')}
+[0m21:37:08.796626 [info ] [MainThread]: Creating dbt configuration folder at 
+[0m21:37:08.934927 [debug] [MainThread]: Starter project path: D:\Users\okayt\anaconda3\envs\dec\lib\site-packages\dbt\include\starter_project
+[0m21:37:09.143377 [info ] [MainThread]: 
+Your new dbt project "jobseeker" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m21:37:09.147072 [info ] [MainThread]: Setting up your profile.
+[0m21:42:17.452072 [info ] [MainThread]: Profile jobseeker written to C:\Users\okayt\.dbt\profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m21:42:17.454073 [debug] [MainThread]: Command `dbt init` succeeded at 21:42:17.454073 after 308.91 seconds
+[0m21:42:17.455108 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000002199F030100>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219BBEA3E80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x00000219BBEA38B0>]}
+[0m21:42:17.456107 [debug] [MainThread]: Flushing usage events
