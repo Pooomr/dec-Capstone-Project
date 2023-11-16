@@ -49,6 +49,3 @@ def run_airbyte_pull(connId: str, airbyteUser: str, airbytePw: str):
                 status = job["status"]
         
     print("Final status is {}".format(status))
-    
-    
-    

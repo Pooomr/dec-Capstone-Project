@@ -4,8 +4,8 @@ dialect = postgres
 exclude_rules = L016,L028,L027
 
 [sqlfluff:templater:dbt]
-project_dir = dbt/adventureworks
-profiles_dir = dbt/adventureworks
+project_dir = dbt/jobseeker
+profiles_dir = dbt/jobseeker
 target = ci
 
 [sqlfluff:templater:jinja]
