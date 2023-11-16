@@ -1,0 +1,13 @@
+jobseeker:
+  outputs:
+    prod:
+      type: snowflake
+      threads: 1
+      account: TA30193.ap-southeast-2
+      user: DBT
+      password: "!DbT0432517255"
+      role: DBT_RW
+      warehouse: ETL
+      database: JOBSEEKER
+      schema: RAW
+  target: prod
