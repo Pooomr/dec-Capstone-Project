@@ -1,0 +1,8 @@
+version: 1
+
+sources:
+  - name: reed_jobs_data
+    database: JOBSEEKER
+    schema: raw
+    tables:
+      - name: REED_JOBS_DATA
