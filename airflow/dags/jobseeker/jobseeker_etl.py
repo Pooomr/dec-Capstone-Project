@@ -31,8 +31,12 @@ with DAG(
     )
 
     run_dbt = BashOperator(
-        task_id="test_dbt_run",
-        bash_command='echo Testing dbt run'
+        task_id="dbt_run",
+        bash_command="cp -R /opt/airflow/dags/dbt /tmp;\
+        cd /tmp/dbt/jobseeker;\
+        /usr/local/airflow/dbt_env/bin/dbt deps;\
+        /usr/local/airflow/dbt_env/bin/dbt build --project-dir /tmp/dbt/jobseeker/ --profiles-dir . --target prod;\
+        cat /tmp/dbt/jobseeker/logs/dbt.log"
     )
 
     pull_data >>  run_dbt
