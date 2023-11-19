@@ -8,7 +8,7 @@
 }}
 select
     "_airbyte_extracted_at" as last_updated,
-    JOB_KEY,
+    job_key,
     "jobId",
-    JOBCATEGORY
-from {{ ref('jobs_categorized_unique')}}
+    jobcategory
+from {{ ref('jobs_categorized_unique') }}

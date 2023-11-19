@@ -14,14 +14,11 @@
         {% set ns.likeValue = ns.likeValue + '%' + word %}
     {% endfor %}
     (
-        select
-            distinct
+        select distinct
             "_airbyte_extracted_at",
             '{{ job }}' as JOBCATEGORY,
             "jobId",
             "jobTitle",
-            date("date", 'DD/MM/YYYY') as "date",
-            date("expirationDate", 'DD/MM/YYYY') as "expirationDate",
             "locationName",
             "minimumSalary",
             "maximumSalary",
@@ -30,7 +27,9 @@
             "employerName",
             "applications",
             "jobDescription",
-            "jobUrl"
+            "jobUrl",
+            date("date", 'DD/MM/YYYY') as "date",
+            date("expirationDate", 'DD/MM/YYYY') as "expirationDate"
         from {{ source('reed_jobs_data','REED_JOBS_DATA') }}
         where upper("jobTitle") like '{{ ns.likeValue | upper }}%'
     )
