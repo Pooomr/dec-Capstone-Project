@@ -4,8 +4,8 @@ dialect = postgres
 exclude_rules = L016,L028,L027
 
 [sqlfluff:templater:dbt]
-project_dir = dbt/jobseeker
-profiles_dir = dbt/jobseeker
+project_dir = airflow/dags/dbt/jobseeker
+profiles_dir = airflow/dags/dbt/jobseeker
 target = ci
 
 [sqlfluff:templater:jinja]
