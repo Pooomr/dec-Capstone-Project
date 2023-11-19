@@ -23,4 +23,4 @@ select
     "jobDescription",
     "jobUrl"
 from {{ ref('jobs_categorized') }}
-group by JOBCATEGORY,"jobId","jobTitle","date","expirationDate","locationName","minimumSalary","maximumSalary","currency","employerId","employerName","applications","jobDescription","jobUrl"
+group by JOBCATEGORY, "jobId", "jobTitle", "date", "expirationDate", "locationName", "minimumSalary", "maximumSalary", "currency", "employerId", "employerName", "applications", "jobDescription", "jobUrl"
