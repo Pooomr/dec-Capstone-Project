@@ -15,11 +15,13 @@
     {% endfor %}
     (
         select
+            distinct
+            "_airbyte_extracted_at",
             '{{ job }}' as JOBCATEGORY,
             "jobId",
             "jobTitle",
-            "date",
-            "expirationDate",
+            date("date", 'DD/MM/YYYY') as "date",
+            date("expirationDate", 'DD/MM/YYYY') as "expirationDate",
             "locationName",
             "minimumSalary",
             "maximumSalary",

@@ -1,0 +1,11 @@
+version: 1
+
+models:
+  - name: jobs_categorized
+    columns:
+      - name: upper("jobId")
+        tests:
+          - not_null
+      - name: JOBCATEGORY
+        tests:
+          - not_null
