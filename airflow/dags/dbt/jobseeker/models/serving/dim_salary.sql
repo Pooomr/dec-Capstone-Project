@@ -3,12 +3,12 @@
         materialized='incremental',
         database='jobseeker',
         unique_key='JOB_KEY',
-        schema='curated'
+        schema='serving'
     )
 }}
 select
-    "_airbyte_extracted_at" as last_updated,
     job_key,
-    "jobId",
-    jobcategory
+    "minimumSalary",
+    "maximumSalary",
+    "currency"
 from {{ ref('jobs_categorized_unique') }}
