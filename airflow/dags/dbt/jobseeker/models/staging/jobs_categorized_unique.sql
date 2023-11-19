@@ -6,8 +6,8 @@
     )
 }}
 select
-    {{ dbt_utils.generate_surrogate_key(['"jobId"', 'JOBCATEGORY']) }} as JOB_KEY,
-    max("_airbyte_extracted_at") "_airbyte_extracted_at",
+    {{ dbt_utils.generate_surrogate_key(['"jobId"', 'JOBCATEGORY']) }} as job_key,
+    max("_airbyte_extracted_at") as "_airbyte_extracted_at",
     JOBCATEGORY,
     "jobId",
     "jobTitle",
