@@ -6,9 +6,9 @@
     )
 }}
 select
-    {{ dbt_utils.generate_surrogate_key(['"jobId"', 'JOBCATEGORY']) }} as job_key,
+    {{ dbt_utils.generate_surrogate_key(['"jobId"', 'jobcategory']) }} as job_key,
     max("_airbyte_extracted_at") as "_airbyte_extracted_at",
-    JOBCATEGORY,
+    jobcategory,
     "jobId",
     "jobTitle",
     "date",
@@ -23,4 +23,4 @@ select
     "jobDescription",
     "jobUrl"
 from {{ ref('jobs_categorized') }}
-group by JOBCATEGORY, "jobId", "jobTitle", "date", "expirationDate", "locationName", "minimumSalary", "maximumSalary", "currency", "employerId", "employerName", "applications", "jobDescription", "jobUrl"
+group by jobcategory, "jobId", "jobTitle", "date", "expirationDate", "locationName", "minimumSalary", "maximumSalary", "currency", "employerId", "employerName", "applications", "jobDescription", "jobUrl"
