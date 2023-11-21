@@ -6,3 +6,8 @@ sources:
     schema: raw
     tables:
       - name: REED_JOBS_DATA
+  - name: dim_locations
+    database: JOBSEEKER
+    schema: serving
+    tables:
+      - name: dim_locations
