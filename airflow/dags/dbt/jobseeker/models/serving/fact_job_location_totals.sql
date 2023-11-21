@@ -7,11 +7,11 @@
 }}
 select
     l.location_name,
-    count(*) as total_jobs,
     l.latitude,
-    l.longitude
-from {{ ref('fact_jobs') }} j
-inner join {{ source('dim_locations','dim_locations')}} l
+    l.longitude,
+    count(*) as total_jobs
+from {{ ref('fact_jobs') }} as j
+inner join {{ source('dim_locations','dim_locations') }} as l
     on j."locationName" = l.location_name
 group by l.location_name, l.latitude, l.longitude
 order by count(*) desc
