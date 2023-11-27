@@ -8,7 +8,7 @@ on:
 
 jobs:
   linter:
-    runs-on: ubuntu-latest
+    runs-on: jobseeker
     container:
       image: python:3.9-bookworm
 
