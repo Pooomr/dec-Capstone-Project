@@ -37,6 +37,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r ./airflow/dags/dbt/requirements.txt
 
+      - name: Debug DBT_PASSWORD
+        run: |
+          echo "DBT_PASSWORD: $DBT_PASSWORD"
+
       - name: Run linting checks. Exit code 1 if linter failed
         run: |
           bash ./bin/linter.sh
