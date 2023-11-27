@@ -4,6 +4,9 @@ set -eu
 main() {
     export TOP_DIR=$(git rev-parse --show-toplevel)
 
+    #Set password for DBT
+    export DBT_PASSWORD="$DBT_PASSWORD"
+
     # Setup dbt
     dbt deps --project-dir "${TOP_DIR}/airflow/dags/dbt/jobseeker"
 
