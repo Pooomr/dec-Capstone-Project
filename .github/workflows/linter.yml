@@ -12,6 +12,9 @@ jobs:
     container:
       image: python:3.9-bookworm
 
+    env:
+      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+
     steps:
       - name: Checkout code repository in agent
         uses: actions/checkout@v4
