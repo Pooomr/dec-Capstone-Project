@@ -168,4 +168,4 @@ Data flows through 3 different stages:
 | SERVING | Final tables ready for serving in Preset Dashboards. New jobs will be appended to the main table 'fact_jobs', if a job already exists the current record will be updated with the incoming data. Historical data will be used for trends analysis |
 
 ### Storage
-Data is stored in Snowflake. Access to Snowflake is done via the DBT User profile
+Data is stored and transformed in Snowflake. Access to Snowflake is via the user 'DBT'. Password is stored in a Git Hub Repository secret and a configured variable in Airflow.
