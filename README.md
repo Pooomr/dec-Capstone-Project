@@ -176,6 +176,8 @@ metadata:
 
 DBT Scripts are contained in the Airflow directory airflow/dags/dbt.
 
+![jobseeker_dataflow.drawio.png](jobseeker_dataflow.drawio.png)
+
 Data flows through 3 different stages:
 | Stage | Description |
 | ----------- | ----------- |
