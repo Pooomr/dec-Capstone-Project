@@ -11,3 +11,8 @@ sources:
     schema: serving
     tables:
       - name: dim_locations
+  - name: location_coordinates
+    database: JOBSEEKER
+    schema: raw
+    tables:
+      - name: location_coordinates

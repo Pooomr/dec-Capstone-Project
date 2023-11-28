@@ -12,6 +12,9 @@ jobs:
     container:
       image: python:3.9-bookworm
 
+    env:
+      DBT_PASSWORD: ${{ secrets.DBT_PASSWORD }}
+
     steps:
       - name: Checkout code repository in agent
         uses: actions/checkout@v4
@@ -33,6 +36,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r ./airflow/dags/dbt/requirements.txt
+
+      - name: Debug DBT_PASSWORD
+        run: |
+          echo "DBT_PASSWORD: $DBT_PASSWORD"
 
       - name: Run linting checks. Exit code 1 if linter failed
         run: |

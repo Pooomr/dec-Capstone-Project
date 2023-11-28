@@ -34,6 +34,8 @@ with DAG(
         task_id="dbt_run",
         bash_command="cp -R /opt/airflow/dags/dbt /tmp;\
         cd /tmp/dbt/jobseeker;\
+        export DBT_PASSWORD={{ var.value.DBT_PASSWORD }};\
+        set;\
         /usr/local/airflow/dbt_env/bin/dbt deps;\
         /usr/local/airflow/dbt_env/bin/dbt build --project-dir /tmp/dbt/jobseeker/ --profiles-dir . --target prod;\
         cat /tmp/dbt/jobseeker/logs/dbt.log"

@@ -2,7 +2,7 @@
     config(
         materialized='incremental',
         database='jobseeker',
-        unique_key='JOB_KEY',
+        unique_key='job_key',
         schema='serving'
     )
 }}
