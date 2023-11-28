@@ -1,6 +1,19 @@
 # Capstone Project - Jobseeker Analysis
 
 ## Table of Contents
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+   * [Introduction](#introduction)
+   * [Architecture](#architecture)
+      + [Orchestration](#orchestration)
+      + [Ingestion](#ingestion)
+      + [YAML for Custom Connector](#yaml-for-custom-connector)
+      + [Airbyte Source Settings](#airbyte-source-settings)
+      + [Transformation](#transformation)
+      + [Storage](#storage)
+      + [Serving](#serving)
+   * [Future Enhancements](#future-enhancements)
+
+<!-- TOC end -->
 
 ## Introduction
 Choosing a career path is a major decision many of us will have to make. This project aims to help by unlocking valuable insights from one of the largest job portals in the UK. Real-time data is extracted from the Reed.co.uk API and analysed, comparing a set of jobs to each other unravelling patterns and correlations.
@@ -24,8 +37,11 @@ Airflow Variables to be set are the following:
 | AIRBYTE_CONNECTION_ID | Refers to ID of Airbyte connection to extract data from Reed.co.uk API |
 | AIRBYTE_PASSWORD | User name of Airbyte instance |
 | AIRBYTE_USER | Password of Airbyte instance |
+| DBT_PASSWORD | Password of user 'DBT' for Snowflake instance |
 
 ### Ingestion
+A Connector is created using the inbuilt S3 source connector to draw location coordinate information into the snowflake instance. This information will be used for mapping purposes.
+
 A Custom Connector has been created in Airbyte to extract data from the Reed.co.uk API. The 'Username' field needs to be filled by the API Key which can be obtained from https://www.reed.co.uk/developers/jobseeker. The 'keyword' input refers to the job roles to search for. This sample has been configured to 'Data Engineer, Data Analyst, Data Scientist'.
 
 ### YAML for Custom Connector
@@ -168,4 +184,31 @@ Data flows through 3 different stages:
 | SERVING | Final tables ready for serving in Preset Dashboards. New jobs will be appended to the main table 'fact_jobs', if a job already exists the current record will be updated with the incoming data. Historical data will be used for trends analysis |
 
 ### Storage
-Data is stored and transformed in Snowflake. Access to Snowflake is via the user 'DBT'. Password is stored in a Git Hub Repository secret and a configured variable in Airflow.
+Data is stored and transformed in Snowflake. Access to Snowflake is via the user 'DBT'. Password is stored in a Git Hub Repository secret and a configured variable in Airflow. The following are tables created/updated as part of the transformation process grouped into the 3 stages:
+
+| Stage | Table Names |
+| ----------- | ----------- |
+| RAW | REED_JOBS_DATA<br />location_coordinates |
+| STAGING | JOBS_CATEGORIZED<br />JOBS_CATEGORIZED_UNIQUE |
+| SERVING | FACT_JOBS*<br />DIM_SALARY*<br />DIM_LOCATIONS*<br />DIM_EMPLOYER<br />FACT_EMPLOYER_STATS<br />FACT_JOB_LOCATION_STATS<br />FACT_JOB_LOCATION_TOTALS<br />FACT_JOB_SALARIES_YEARLY<br />FACT_JOB_STATS |
+
+\* - Table data is appended on each DBT run
+
+### Serving
+Final data is served to a dashboard in Preset. 
+
+![Preset_Dashboard.png](Preset_Dashboard.png)
+
+| Chart Name | Description |
+| ----------- | ----------- |
+| No. of Jobs Available vs Salary | Charts out the total number of jobs currently available with the Maximum Salary |
+| Job and Location breakdown | Breakdown of current available jobs on location, total number, average number of applications and salary insights |
+| Overall figures | High level insights for each Job category |
+| Salary Analysis | Box plot chart showing the distribution of maximum and minimum salary ranges across each job role category |
+| Job Locations Heat Map | Heat map showing density of job roles based on the location |
+| Applications Analysis | Box plot chart showing the average number of applications for each job category |
+
+## Future Enhancements
+> - Automate maintenance of location coordinate data by using the google maps Geocode API
+> - Make input of Job roles more configurable
+> - Update transformation steps to accommodate analysis for trends over time, FACT_JOBs table is currently being updated by appending/updating records based on job_key to enable this.
