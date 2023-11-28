@@ -5,9 +5,9 @@
         schema='serving'
     )
 }}
-select 
+select
     "ID" as LOCATION_ID,
     "locationName" as LOCATION_NAME,
     "Latitude" as LATITUDE,
     "Longitude" as LONGITUDE
-from raw."location_coordinates"
+from {{ source('location_coordinates','location_coordinates') }}
